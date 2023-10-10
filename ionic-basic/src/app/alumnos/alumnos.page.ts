@@ -16,16 +16,15 @@ export class AlumnosPage implements OnInit {
   idActualizar: any;
   error: boolean = false;
 
-  constructor(private alumnoService: AlumnosService) { }
+  constructor(private alumnoService: AlumnosService) { 
+
+  }
 
   ngOnInit() {
     this.alumnoService.setAlumnos([
-      {id:1, nombre: 'Gerardo Martinez'
-      ,matricula: '745589'},
-      {id:2, nombre: 'Isela Rodriguez',
-      matricula: '855449'},
-      {id:3, nombre: 'Esteban',
-      matricula: '0021554'}
+      {id:1, nombre: 'Gerardo Martinez', matricula: '745589'},
+      {id:2, nombre: 'Isela Rodriguez', matricula: '855449'},
+      {id:3, nombre: 'Esteban', matricula: '0021554'}
     ]);
 
     this.alumnos = this.alumnoService.getAlumos();
@@ -73,4 +72,4 @@ export class AlumnosPage implements OnInit {
     this.idActualizar = alumno.id;
   }
 
-}
+  }
