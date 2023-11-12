@@ -4,50 +4,28 @@ import { AutGuardGuard } from './service/aut-guard.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.HomePageModule)
   },
   {
     path: '',
-    redirectTo: 'receta',
+    redirectTo: 'alumnos',
     pathMatch: 'full'
   },
   {
     path: 'alumnos',
-    loadChildren: () => import('./alumnos/alumnos.module').then( m => m.AlumnosPageModule),
+    loadChildren: () => import('./receta/receta.module').then( m => m.RecetaPageModule),
     canActivate: [AutGuardGuard]
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
+    loadChildren: () => import('./detalle-receta/detalle-receta.module').then( m => m.DetalleRecetaPageModule),
     canActivate: [AutGuardGuard]
   },
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
     canActivate: [AutGuardGuard]
-  },
-
-  {
-    path: 'receptor',
-    loadChildren: () => import('./receptor/receptor.module').then( m => m.ReceptorPageModule),
-    canActivate: [AutGuardGuard]
-  },
-  {
-    path: 'receta',
-    loadChildren: () => import('./receta/receta.module').then( m => m.RecetaPageModule),
-    canActivate: [AutGuardGuard]
-  },
-  {
-    path: 'detalle-receta',
-    loadChildren: () => import('./detalle-receta/detalle-receta.module').then( m => m.DetalleRecetaPageModule),
-    canActivate: [AutGuardGuard]
-  },
-  {
-    path: 'presupuesto',
-    loadChildren: () => import('./presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule),
-    canActivate: [AutGuardGuard]
-
   },
   {
     path: 'login',
@@ -58,17 +36,26 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
-  },
-  {
-    path: 'float-menu',
-    loadChildren: () => import('./float-menu/float-menu/float-menu.component').then( m => m.FloatMenuComponent)
-  },
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule),
+    path: 'presupuesto',
+    loadChildren: () => import('./presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule),
     canActivate: [AutGuardGuard]
+  },
+  {
+    path: 'destinos',
+    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule),
+    canActivate: [AutGuardGuard]
+  },
+  {
+    path: 'receptor',
+    loadChildren: () => import('./receptor/receptor.module').then( m => m.ReceptorPageModule)
+  },
+  {
+    path: 'receta',
+    loadChildren: () => import('./receta/receta.module').then( m => m.RecetaPageModule)
+  },
+  {
+    path: 'detalle-receta',
+    loadChildren: () => import('./detalle-receta/detalle-receta.module').then( m => m.DetalleRecetaPageModule)
   },
 
 ];

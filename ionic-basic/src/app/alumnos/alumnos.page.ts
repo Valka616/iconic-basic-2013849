@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlumnosService } from '../service/alumnos.service';
 import { Alumno } from '../interface/alumno';
-
+import { DatosAlumnosComponent } from '../componentes/datos-alumnos/datos-alumnos.component';
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.page.html',
