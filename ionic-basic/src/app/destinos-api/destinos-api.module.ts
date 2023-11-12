@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DestinosPageRoutingModule } from './destinos-routing.module';
+import { DestinosApiPageRoutingModule } from './destinos-api-routing.module';
 
-import { DestinosPage } from './destinos.page';
+import { DestinosApiPage } from './destinos-api.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DestinosPageRoutingModule,
+    DestinosApiPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [DestinosPage]
+  declarations: [DestinosApiPage]
 })
- export class DestinosPageModule {}
+export class DestinosApiPageModule {}

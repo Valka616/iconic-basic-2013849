@@ -38,6 +38,10 @@ const routes: Routes = [
       {
         path: 'alumnos',
         loadChildren: () => import('./alumnos/alumnos.module').then( m => m.AlumnosPageModule)
+      },
+      {
+        path: 'destinos-api',
+        loadChildren: () => import('./destinos-api/destinos-api.module').then( m => m.DestinosApiPageModule)
       }
     ],
     canActivate: [AutGuardGuard]
@@ -46,6 +50,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)

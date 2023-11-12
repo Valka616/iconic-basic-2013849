@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Menu } from 'src/app/interface/menu';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AutService } from '../service/aut.service.ts';
+import { AutService } from '../app/service/aut.service.ts';
 import { MenuService } from '../service/menu.service';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -68,8 +68,8 @@ export class FloatMenuComponent  implements OnInit, OnDestroy {
       icono:'restaurant-outline'},
       {nombre: 'inicio',enlace:'main/inicio', 
       icono:'navigate-outline'},
-      {nombre: 'Turismo',enlace:'main/destinos',
-      icono:'airplane'},
+      {nombre: 'Turismo-firestore',enlace:'main/destinos', icono:'airplane'},
+          {nombre: 'Turismo-api',enlace:'main/destinos-api', icono:'airplane'},
       {nombre: 'Presupuesto',enlace:'main/presupuesto',
       icono:'cash-outline'},
       {nombre: 'Tabs',enlace:'main/tabs',
