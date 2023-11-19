@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Lugar } from '../interface/lugar';
 import { AutService } from '../service/aut.service';
-
+import { GooglemapsComponent } from '../componentes/googlemaps/googlemaps.component';
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-destinos',
   templateUrl: './destinos.page.html',
@@ -21,7 +22,8 @@ export class DestinosPage implements OnInit {
 
   constructor(
     private authService: AutService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
