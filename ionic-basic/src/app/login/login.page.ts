@@ -7,6 +7,7 @@ import { AutService } from '../service/aut.service';
 import { Router } from '@angular/router';
 import { MenuService } from '../service/menu.service';
 import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
+import { StorageService } from '../service/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginPage implements OnInit {
 
   user: User = new User();
   ionicForm: any;
+  usuario: any = {};
 
   constructor(
     private router: Router,
@@ -24,7 +26,8 @@ export class LoginPage implements OnInit {
     private autSvc: AutService,
     private menu: MenuService,
     private formBuilder: FormBuilder,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private storage : StorageService
   ) { }
 
   ngOnInit() {
@@ -44,12 +47,14 @@ export class LoginPage implements OnInit {
         console.log('Successfully logged in!');
         this.loadingController.dismiss();
         setTimeout(() => {
+          this.guardarLocalStorage();
           this.menu.setTitle("presupuesto");
           this.router.navigate(['main/presupuesto']);
         }, 650);
       }
       else{
         if(user.code){
+          this.loadingController.dismiss();
           if(user.code=='auth/wrong-password' || user.code =='auth/invalid-email' || user.code=='auth/argument-error'){
             this.openModal(user);
           }
@@ -88,6 +93,7 @@ export class LoginPage implements OnInit {
     if(this.ionicForm.valid){
       this.user.email = this.ionicForm.get('email').value;
       this.user.password = this.ionicForm.get('password').value;
+      this.presentLoadingWithOptions();
       this.onLogin();
     }
   } 
@@ -99,4 +105,35 @@ export class LoginPage implements OnInit {
     this.menu.setTitle("register")
     this.router.navigate(['/register']);
   }  
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      //spinner: null,
+      duration: 5000,
+      message: 'Click the backdrop to dismiss early...',
+      //translucent: true,
+      //cssClass: 'custom-class custom-loading',
+      backdropDismiss: true
+    });
+
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed with role:', role);
+  }   
+  getUsuario(){
+    this.storage.getValue('usuario').
+    then(user=>{
+      this.usuario = user;
+      console.info(this.usuario);
+    }).
+    catch(error=>{
+      console.error(error);
+    });
+  }
+  guardarLocalStorage(){
+    this.storage.setValue('usuario',
+    {nombre:'bgr nombre', direccion:'Jose Silvestre aramberri'})
+    this.getUsuario();
+  }
 }
